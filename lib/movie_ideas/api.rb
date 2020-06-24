@@ -1,7 +1,6 @@
 class MovieIdeas::API
     attr_accessor :url
 
-    KEY = ENV["TMDB_API_KEY"]
     URL = "https://api.themoviedb.org/3"
 
     def initialize(url)
@@ -19,7 +18,7 @@ class MovieIdeas::API
     end
 
     def self.get_genres
-        @genre_hash = self.new("#{URL}/genre/movie/list?api_key=#{KEY}&language=en-US").parse_json
+        @genre_hash = self.new("#{URL}/genre/movie/list?api_key=#{ENV["TMDB_KEY"]}&language=en-US").parse_json
     end
 
     def self.make_genres
@@ -39,7 +38,7 @@ class MovieIdeas::API
         end
         month = Time.now.strftime("%m")
         day = Time.now.strftime("%d")
-        url = "#{URL}/discover/movie?api_key=#{KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&release_date.gte=#{min_year}-#{month}-#{day}&release_date.lte=#{max_year}-#{month}-#{day}&vote_average.gte=#{min_score}&with_genres=#{genre.id}"
+        url = "#{URL}/discover/movie?api_key=#{ENV["TMDB_KEY"]}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&release_date.gte=#{min_year}-#{month}-#{day}&release_date.lte=#{max_year}-#{month}-#{day}&vote_average.gte=#{min_score}&with_genres=#{genre.id}"
         @movies_hash = self.new(url).parse_json
         # TODO: add functionality to include adding multiple pages to hash
     end

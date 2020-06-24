@@ -2,7 +2,7 @@ class MovieIdeas::CLI
 
     def call
         puts "\nWelcome to Movie Ideas!\n"
-        binding.pry
+        # binding.pry
         get_genres
         list_genres
         get_user_genre
