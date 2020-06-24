@@ -1,7 +1,7 @@
 class MovieIdeas::API
     attr_accessor :url
 
-    KEY = ""
+    KEY = ENV["API_KEY"]
     URL = "https://api.themoviedb.org/3"
 
     def initialize(url)
