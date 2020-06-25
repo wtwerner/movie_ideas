@@ -10,7 +10,6 @@ class MovieIdeas::CLI
         get_user_era
         confirm_inputs
         search_api
-        # binding.pry
         pick_random_10
         get_user_movie_selection
     end
