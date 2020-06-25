@@ -2,7 +2,6 @@ class MovieIdeas::CLI
 
     def call
         puts "\nWelcome to Movie Ideas!\n"
-        # binding.pry
         get_genres
         list_genres
         get_user_genre
@@ -11,6 +10,7 @@ class MovieIdeas::CLI
         get_user_era
         confirm_inputs
         search_api
+        # binding.pry
         pick_random_10
         get_user_movie_selection
     end
@@ -115,7 +115,7 @@ class MovieIdeas::CLI
 
     def search_api
         MovieIdeas::API.get_with_user_inputs(@genre, @min_score, @min_year, @max_year)
-        MovieIdeas::API.make_movies
+        # MovieIdeas::API.make_movies
     end
 
     def pick_random_10
