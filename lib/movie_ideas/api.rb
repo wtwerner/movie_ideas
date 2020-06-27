@@ -19,6 +19,7 @@ class MovieIdeas::API
 
     def self.get_genres
         @genre_hash = self.new("#{URL}/genre/movie/list?api_key=#{ENV["TMDB_KEY"]}&language=en-US").parse_json
+        self.make_genres
     end
 
     def self.make_genres

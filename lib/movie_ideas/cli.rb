@@ -16,7 +16,6 @@ class MovieIdeas::CLI
 
     def get_genres
         MovieIdeas::API.get_genres
-        MovieIdeas::API.make_genres
     end
 
     def list_genres
@@ -174,7 +173,4 @@ class MovieIdeas::CLI
                 ask_for_new_search
         end
     end
-
 end
-
-# :title, :release_date, :vote_average, :vote_count, :genre, :overview, :release_year
