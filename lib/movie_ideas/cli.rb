@@ -6,7 +6,6 @@ class MovieIdeas::CLI
         list_genres
         get_user_genre
         get_user_score
-        list_eras
         get_user_era
         confirm_inputs
         search_api
@@ -51,6 +50,7 @@ class MovieIdeas::CLI
     end
 
     def get_user_era
+        list_eras
         user_era = gets.strip
         if user_era.to_i.between?(1, @eras.count)
             @era = @eras[user_era.to_i-1]
