@@ -41,7 +41,7 @@ class MovieIdeas::API
         day = Time.now.strftime("%d")
         current_page = 1
         while current_page <= 5
-            url = "#{URL}/discover/movie?api_key=#{ENV["TMDB_KEY"]}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=#{current_page}&vote_count.gte=50&release_date.gte=#{min_year}-#{month}-#{day}&release_date.lte=#{max_year}-#{month}-#{day}&vote_average.gte=#{min_score}&with_genres=#{genre.id}"
+            url = "#{URL}/discover/movie?api_key=#{ENV["TMDB_KEY"]}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=#{current_page}&vote_count.gte=50&primary_release_date.gte=#{min_year}-#{month}-#{day}&primary_release_date.lte=#{max_year}-#{month}-#{day}&vote_average.gte=#{min_score}&with_genres=#{genre.id}"
             @movies_hash = self.new(url).parse_json
             self.make_movies
             current_page += 1

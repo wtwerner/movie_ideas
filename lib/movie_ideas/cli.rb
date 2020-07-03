@@ -113,7 +113,6 @@ class MovieIdeas::CLI
 
     def search_api
         MovieIdeas::API.get_with_user_inputs(@genre, @min_score, @min_year, @max_year)
-        # MovieIdeas::API.make_movies
     end
 
     def pick_random_10
