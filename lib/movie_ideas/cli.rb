@@ -81,10 +81,6 @@ class MovieIdeas::CLI
         end
     end
 
-    def input
-        @input
-    end
-
     def get_min_max_year(user_era)
         current_year = Time.now.year
         if user_era == "1"

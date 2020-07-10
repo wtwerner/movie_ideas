@@ -13,14 +13,6 @@ class MovieIdeas::Movie
         @@all
     end
 
-    def self.reset_all
-        @@all.clear
-    end
-
-    def self.reset_selection
-        @@selection.clear
-    end
-
     def self.pick_random_10
         @@selection = @@all.sample(10)
     end
