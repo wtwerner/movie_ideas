@@ -18,12 +18,12 @@ class MovieIdeas::API
     end
 
     def self.get_genres
-        @genre_hash = self.new("#{URL}/genre/movie/list?api_key=#{ENV["TMDB_KEY"]}&language=en-US").parse_json
+        @@genre_hash = self.new("#{URL}/genre/movie/list?api_key=#{ENV["TMDB_KEY"]}&language=en-US").parse_json
         self.make_genres
     end
 
     def self.make_genres
-        @genre_hash["genres"].each do |genre|
+        @@genre_hash["genres"].each do |genre|
             name = genre["name"]
             id = genre["id"]
             Genre.new(name, id)
@@ -42,14 +42,14 @@ class MovieIdeas::API
         current_page = 1
         while current_page <= 5
             url = "#{URL}/discover/movie?api_key=#{ENV["TMDB_KEY"]}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=#{current_page}&vote_count.gte=50&primary_release_date.gte=#{min_year}-#{month}-#{day}&primary_release_date.lte=#{max_year}-#{month}-#{day}&vote_average.gte=#{min_score}&with_genres=#{genre.id}"
-            @movies_hash = self.new(url).parse_json
+            @@movies_hash = self.new(url).parse_json
             self.make_movies
             current_page += 1
         end
     end
 
     def self.make_movies
-        @movies_hash["results"].each do |movie|
+        @@movies_hash["results"].each do |movie|
             new_movie = MovieIdeas::Movie.new(movie["title"])
             new_movie.id = movie["id"]
             new_movie.release_date = movie["release_date"]
